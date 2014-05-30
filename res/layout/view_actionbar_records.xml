@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_actionbar_records"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_margin="0dp"
+    android:background="#444444"
+    android:padding="0dp" >
+        
+    <ImageButton
+        android:id="@+id/to_templates"        
+        style="@style/actionbar_button"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="2dp"
+        android:paddingRight="18dp"
+        android:contentDescription="@string/descr_to_templates"
+        android:src="@drawable/ic_action_previous_item" />
+
+    <LinearLayout
+        android:id="@+id/add_record"
+        style="@style/actionbar_button"
+        android:layout_centerInParent="true"
+        android:layout_toRightOf="@+id/to_templates"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:longClickable="true"
+        android:orientation="horizontal" 
+        android:contentDescription="@string/descr_add_record">
+        
+        <ImageButton
+            android:id="@+id/add_record_imgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@null"
+            android:contentDescription="@string/descr_add_record"
+            android:clickable="false"
+            android:focusable="false"
+            android:longClickable="false"
+            android:src="@drawable/ic_action_new" />
+	
+		<TextView
+		    android:id="@+id/add_record_textView"
+		    android:layout_width="wrap_content"
+		    android:layout_height="fill_parent"
+		    android:background="@null"
+		    android:clickable="false"
+		    android:focusable="false"
+		    android:gravity="center_vertical"
+		    android:longClickable="false"
+		    android:paddingLeft="2dp"
+		    android:text="@string/record"
+		    android:textColor="@color/actionbar_text"
+		    android:textSize="@dimen/abc_action_bar_title_text_size"
+		    android:textStyle="bold" />
+		       
+    </LinearLayout>
+    
+    <ImageButton
+        android:id="@+id/more_for_records"
+        style="@style/actionbar_button"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_toLeftOf="@+id/to_statistic"
+        android:contentDescription="@string/descr_more_for_records"
+        android:src="@drawable/ic_action_expand" 
+        />
+    
+     <ImageButton
+        android:id="@+id/to_statistic"
+        style="@style/actionbar_button"
+        android:paddingLeft="18dp"
+		android:paddingRight="2dp"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/descr_to_statistics"
+        android:src="@drawable/ic_action_next_item" />
+
+</RelativeLayout>

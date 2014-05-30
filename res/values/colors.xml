@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <color name="actionbar_text">#ccffffff</color>
+    <color name="actionbar_button_pressed">#8866CCFF</color>
+    <color name="income">#99669900</color>
+    <color name="costs">#99CC0000</color>
+    
+</resources>

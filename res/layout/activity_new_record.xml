@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_new_record"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    >
+
+    <RadioGroup
+        android:id="@+id/radioGroup_new_record_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" >
+
+        <RadioButton
+            android:id="@+id/radio_new_record_rtype_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/rtype_cost" 
+            android:layout_marginRight="10dp"/>
+
+        <RadioButton
+            android:id="@+id/radio_new_record_rtype_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rtype_income" 
+            android:layout_marginLeft="10dp"/>
+    </RadioGroup>
+
+    <View
+        android:id="@+id/div_h_01"
+        style="@style/divider_horizontal"
+        android:layout_below="@+id/radioGroup_new_record_type" />
+
+    
+    <TextView
+        android:id="@+id/textView_icitem_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/div_h_01"
+        android:text="@string/citem_cost"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TextView
+        android:id="@+id/textView_icitem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView_icitem_type"
+        android:layout_below="@+id/div_h_01"
+        android:layout_marginRight="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:longClickable="true"
+        android:background="@drawable/state_selector"
+        android:text="@string/select_item"
+        android:padding="3dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TextView
+        android:id="@+id/textView_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView_icitem_type"
+        android:layout_below="@+id/textView_icitem_type"
+        android:layout_marginTop="20dp"
+        android:text="@string/record_sum"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+     <EditText
+         android:id="@+id/editText_sum"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignRight="@+id/textView_icitem"
+         android:layout_alignBottom="@+id/textView_sum"
+         android:layout_below="@+id/textView_icitem"
+         android:ems="10"
+         android:inputType="numberDecimal" >
+	</EditText>
+    
+     
+    <TextView
+        android:id="@+id/textView_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView_icitem_type"
+        android:layout_below="@+id/textView_sum"
+        android:layout_marginTop="25dp"
+        android:text="@string/record_comment"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+     <EditText
+        android:id="@+id/editText_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView_icitem"
+        android:layout_alignBottom="@+id/textView_comment"
+        android:layout_below="@+id/editText_sum"
+        android:ems="10"
+        android:inputType="text" />
+        
+    <TextView
+        android:id="@+id/textView_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView_icitem_type"
+        android:layout_below="@+id/textView_comment"
+        android:layout_marginTop="25dp"
+        android:paddingBottom="20dp"
+        android:text="@string/record_date"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView_date_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView_icitem"
+        android:layout_alignTop="@+id/textView_date"
+        android:layout_below="@+id/editText_comment"
+        android:paddingBottom="20dp"
+        android:text="@string/record_date"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+     <View
+        android:id="@+id/div_h_02"
+        style="@style/divider_horizontal"
+        android:layout_below="@+id/textView_date" />
+
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:layout_below="@+id/textView_date"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="5dp"
+         android:layout_marginBottom="5dp">
+                 
+     <Button
+         android:id="@+id/button_new_record_cancel"
+         style="?android:attr/buttonBarButtonStyle"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginRight="10dp"
+         android:text="@string/cancel" />
+     
+     <Button
+         android:id="@+id/button_new_record_ok"
+         style="?android:attr/buttonBarButtonStyle"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="10dp"
+         android:text="@string/ok" />
+         
+     </LinearLayout>
+     
+    
+</RelativeLayout>
+
+
+
+
+
+
+

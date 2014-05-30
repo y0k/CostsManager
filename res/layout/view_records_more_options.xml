@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_records_more_dropdown"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/records_show_type"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginLeft="20dp"
+        />
+    
+    <RadioGroup
+        android:id="@+id/radioGroup_records_type"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radio_records_type_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/records_type_all" />
+
+        <RadioButton
+            android:id="@+id/radio_records_type_incomes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/records_type_incomes" />
+
+        <RadioButton
+            android:id="@+id/radio_records_type_costs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/records_type_costs" />
+    </RadioGroup>
+
+    <View
+        style="@style/divider_horizontal"
+        />    
+    
+     <TextView
+		android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sort_records_by_date"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:layout_marginLeft="20dp"/>
+    
+    <RadioGroup
+        android:id="@+id/radioGroup_sort_records_by_date"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radio_sort_records_new_above"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/sort_records_new_above" />
+
+        <RadioButton
+            android:id="@+id/radio_sort_records_new_below"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sort_records_new_below" />
+    </RadioGroup>
+
+</LinearLayout>

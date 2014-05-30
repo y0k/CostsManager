@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:id="@+id/layout_list_item_record">
+
+    <TextView
+        android:id="@+id/textView_list_item_record_citem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/list_item_left_margin"
+        android:layout_marginTop="10dp"
+        android:text="@string/record_citem"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:textStyle="bold"
+        android:textColor="@color/costs"/>
+
+    <TextView
+        android:id="@+id/textView_list_item_record_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+       	android:layout_marginRight="@dimen/list_item_right_margin"
+       	android:layout_marginTop="10dp"
+        android:text="@string/record_sum"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:textStyle="bold"
+        android:textColor="@color/costs"/>
+
+    <TextView
+        android:id="@+id/textView_list_item_record_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_list_item_record_citem"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/list_item_left_margin"
+        android:text="@string/record_date" />
+
+    <TextView
+        android:id="@+id/textView_list_item_record_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_list_item_record_date"
+        android:layout_marginLeft="@dimen/list_item_left_margin"
+        android:text="@string/record_comment" 
+        android:paddingBottom="10dp"/>
+
+</RelativeLayout>
