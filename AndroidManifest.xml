@@ -11,7 +11,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="CM_001"
         android:theme="@style/AppTheme" >
         <activity
             android:name="arto.costsmanager.MainActivity"
@@ -26,9 +26,17 @@
           <activity
             android:name="arto.costsmanager.ActivityNewRecord"
             android:theme="@style/wide_dialog"
-            android:label="@string/new_record">
-              
-          </activity>
+            android:label="@string/new_record"/>
+          
+          <activity 
+              android:name="arto.costsmanager.ActivityItems"
+              android:label="@string/app_name"/>
+          
+          <activity
+              android:name="arto.costsmanager.ActivityNewItem"
+              android:theme="@style/wide_dialog"
+              android:label="@string/new_icitem"/>
+          
         
     </application>
 

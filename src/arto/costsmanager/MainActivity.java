@@ -13,7 +13,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import arto.costsmanager.records.ICItem;
-import arto.costsmanager.records.Record;
 
 
 public class MainActivity extends Activity {
@@ -45,15 +44,10 @@ public class MainActivity extends Activity {
 		}
 		dialogRecordsMore = new DialogRecordsMore();
 		dialogRecordsMore.setDialogListener(fragmentRecordList);
-		
-//		dialogNewRecord = new DialogNewRecord();
-//		dialogNewRecord.setNewRecordListener(fragmentRecordList);
-//		dialogNewRecord.setRecordsInterface(
-//				fragmentRecordList.getRecordsInterface());
-		
-		final ImageButton imgBtnMoreForRecords = (ImageButton) 
+
+		final ImageButton imgBtnMore = (ImageButton) 
 				findViewById(R.id.more_for_records);
-		imgBtnMoreForRecords.setOnClickListener(new OnClickListener() {
+		imgBtnMore.setOnClickListener(new OnClickListener() {
 			@SuppressLint("NewApi")
 			@Override
 			public void onClick(View v) {				
@@ -65,31 +59,36 @@ public class MainActivity extends Activity {
 		addRecord.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
-//				activity.setRecordsInterface(
-//						fragmentRecordList.getRecordsInterface());
-				Intent intent = new Intent(
-						MainActivity.this, ActivityNewRecord.class);
+				Intent intent = new Intent(MainActivity.this, 
+						ActivityNewRecord.class);
 				intent.putExtra(ICItem.KEY_COSTS, 
-						(String [] ) fragmentRecordList.getRecordsInterface().
-						getAllCostItemNames().toArray());
+						fragmentRecordList.getRecordsInterface().
+						getCostItemNames());
 				intent.putExtra(ICItem.KEY_INCOMES, 
-						(String [] ) fragmentRecordList.getRecordsInterface().
-						getAllIncomeItemNames().toArray());
+						fragmentRecordList.getRecordsInterface().
+						getIncomeItemNames());
 				
 				startActivityForResult(intent, REQ_CODE_NEW_RECORD);
 			}
 		});
 		
-
+		ImageButton imgBtnToItems = (ImageButton) 
+				findViewById(R.id.to_templates);
+		imgBtnToItems.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, 
+						ActivityItems.class);
+				startActivity(intent);
+			}
+		});
 		
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == REQ_CODE_NEW_RECORD && resultCode == RESULT_OK) {
-			fragmentRecordList.addRecord(
-					(Record) data.getParcelableExtra(Record.KEY_RECORD));
+			fragmentRecordList.addRecord(data);
 		}
 	}
 	

@@ -29,7 +29,7 @@ public class Record implements Parcelable{
 	
 	private HashMap<String, Object> hashMap;
 	
-	public Record(Record r, int id) {
+	public Record(int id, Record r) {
 		this.id = id;
 		this.item = r.item;
 		this.sum = r.sum;

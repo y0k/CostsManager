@@ -5,72 +5,61 @@ import java.util.List;
 
 public interface RecordsInterface {
 
-	//For records
-	int addNewRecord(RType type, String state, double sum, long date, 
-			String comment);
-	int addNewRecord(Record newRecord); //returns ID of this new record
+	//Records
 	
+	
+	int addRecord(int itemId, double sum, long date, String comment);
+	int addRecord(Record newRecord); //returns ID of this new record
 	Record getRecord(int id);
-	
+	boolean editRecord(int recordId, int itemId, double sum, long date, 
+			String comment);
+	boolean editRecord(Record editedRecord);
 	void deleteRecord(int id);
-	
-	boolean changeSum(int recordId, double newSum);
-	boolean changeICItem(int recordId, ICItem newItem);
-	boolean changeDate(int recordId, long newDate);
-	boolean changeComment(int recordId, String newComment);
 
-	List<Record> getRecords(ICItem item);
+	List<Record> getRecords(int itemId);
 	List<Record> getRecords(long dateFrom, long dateTo);
 	List<Record> getRecords(RType type, long dateFrom, long dateTo);
-	List<Record> getRecords(ICItem [] items, long dateFrom, long dateTo);
-	
+	List<Record> getRecords(int [] itemIds, long dateFrom, long dateTo);
+		
 	List<Record> getAllRecords();
+	List<Record> getIncomes();
+	List<Record> getCosts();
+
 	List<HashMap<String, Object>> getAllRecordsAsMapList();
-	
-	List<Record> getAllIncomes();
-	List<HashMap<String, Object>> getAllIncomesAsMapList();
-	
-	List<Record> getAllCosts();
-	List<HashMap<String, Object>> getAllCostsAsMapList();
+	List<HashMap<String, Object>> getIncomesAsMapList();
+	List<HashMap<String, Object>> getCostsAsMapList();
 	
 	int [] getAllRecordsIds();
-	int [] getAllCostsIds();
-	int [] getAllIncomesIds();
+	int [] getIncomesIds();
+	int [] getCostsIds();
 	
-	//For items
-	//Items have unique names within their type.
-	boolean addItem(RType type, String name); //return false if error or 
-												//such item already exists
-	boolean addItem(ICItem newItem);
-	
-	boolean changeItem(RType type, String name, String newName);
-	boolean changeItem(RType type, String name, RType newType);
-	boolean changeItem(RType type, String name, RType newType, 
-			String newName);
-	
-	void deleteItem(RType type, String name);
-	void deleteItem(ICItem item);
+	//Income/Cost Items
+	int addICItem(RType type, String name); 
+	int addICItem(ICItem newItem);
+	ICItem getICItem(int id);
+	boolean editICItem(int id, RType newType, String newName);
+	boolean editICItem(ICItem editedItem);
+	void deleteICItem(int id);
 	
 	List<ICItem> getAllItems();
-	List<ICItem> getAllIncomeItems();
-	List<ICItem> getAllCostItems();
+	List<ICItem> getIncomeItems();
+	List<ICItem> getCostItems();
 	
-	List<String> getAllItemNames();
-	List<String> getAllIncomeItemNames();
-	List<String> getAllCostItemNames();
+	String [] getIncomeItemNames();
+	String [] getCostItemNames();
+	
+	int [] getAllItemIds();
+	int [] getIncomeItemIds();
+	int [] getCostItemIds();
+	
+	
 	
 	//For templates
 	int addTemplate(RTemplate newTemplate); //return ID of this new template
 	int addTemplate(String name, ICItem item, double sum, String comment);
 	
 	void deleteTemplate(int id);
-	
-	boolean changeTemplate(int id, String newName);
-	boolean changeTemplate(int id, ICItem newItem);
-	boolean changeTemplate(int id, String newName, String newComment);
-	boolean changeTemplate(int id, double sum);
-	boolean changeTemplate(int id, String name, double sum);
-	boolean changeTemplate(int id, String newName, ICItem newItem, 
+	boolean editTemplate(int id, String newName, int istemId, 
 			double newSum, String newComment);
 	
 	RTemplate getTemplate(int id);

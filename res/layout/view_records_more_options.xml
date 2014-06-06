@@ -8,7 +8,7 @@
     <TextView 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/records_show_type"
+        android:text="@string/show_records"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginLeft="20dp"
         />
@@ -24,19 +24,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/records_type_all" />
+            android:text="@string/type_all" />
 
         <RadioButton
             android:id="@+id/radio_records_type_incomes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/records_type_incomes" />
+            android:text="@string/type_incomes" />
 
         <RadioButton
             android:id="@+id/radio_records_type_costs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/records_type_costs" />
+            android:text="@string/type_costs" />
     </RadioGroup>
 
     <View

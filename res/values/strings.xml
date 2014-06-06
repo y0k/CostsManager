@@ -6,6 +6,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="no_records">No records</string>
+    <string name="no_items">No items</string>
+    
     <string name="record_citem">Cost/Income Item</string>
     <string name="record_sum">Sum</string>
     <string name="record_date">Date</string>
@@ -13,36 +15,50 @@
     <string name="citem_cost">Cost Item</string>
     <string name="citem_income">Income Item</string>
     
+    <string name="item">Item</string>
+    <string name="name">Name</string>
+    
     <string name="rtype_income">Income</string>
     <string name="rtype_cost">Cost</string>    
     
     <string name="descr_to_templates">To Templates Page</string>
     <string name="descr_to_statistics">To Statistics Page</string>
-    <string name="descr_more_for_records">See more actions</string>
+    <string name="descr_more_actions">See more actions</string>
     <string name="descr_add_record">Add new record</string>
+    
+    <string name="descr_add_item">Add new Income/Cost Item</string>
+    <string name="descr_to_records">To Records Page</string>
     
     <string name="record">Record</string>
     
-    <string name="records_show_type">Show records:</string>
-    <string name="records_type_all">All</string>
-    <string name="records_type_incomes">Incomes</string>
-    <string name="records_type_costs">Costs</string>
+    <string name="show_records">Show records:</string>
+    <string name="type_all">All</string>
+    <string name="type_incomes">Incomes</string>
+    <string name="type_costs">Costs</string>
         
     <string name="sort_records_by_date">Sort by date:</string>
     <string name="sort_records_new_above">Latest records are above</string>
     <string name="sort_records_new_below">Latest records are below</string>
-        
+
+    <string name="show_items">Show items:</string>
+    
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>    
-    <string name="records_options">Records options</string>
+    
+    <string name="records_options">Records Options</string>
+    <string name="icitems_options">Income/Cost Items Options</string>
+    
     
   	<string name="select_item">Select Item</string>
   	<string name="select_income_item">Select Income Item</string> 
   	<string name="select_cost_item">Select Cost Item</string>  
   	
   	<string name="new_record">New Record</string>
-    
   	<string name="delete_record">Delete record</string>
   	<string name="edit_record">Edit record</string>
+  	
+  	<string name="new_icitem">New Income/Cost Item</string>
+  	<string name="delete_icitem">Delete Item</string>
+  	<string name="edit_icitem">Edit Item</string>
   	
 </resources>

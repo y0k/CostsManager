@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+    
+    <RadioGroup
+        android:id="@+id/radioGroup_new_item_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" >
+
+        <RadioButton
+            android:id="@+id/radio_new_item_rtype_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/rtype_cost" 
+            android:layout_marginRight="10dp"/>
+
+        <RadioButton
+            android:id="@+id/radio_new_item_rtype_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rtype_income" 
+            android:layout_marginLeft="10dp"/>
+    </RadioGroup>
+    
+    <View
+        android:id="@+id/div_h_01"
+        style="@style/divider_horizontal"
+        android:layout_below="@+id/radioGroup_new_item_type" />
+    
+    <TextView
+        android:id="@+id/textView_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/div_h_01"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+     <EditText
+         android:id="@+id/editText_item_name"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"
+         android:layout_alignBottom="@+id/textView_item_name"
+         android:layout_below="@+id/div_h_01"
+         android:layout_marginRight="10dp"
+         android:ems="10"
+         android:inputType="text"
+         
+         />
+     
+      <View
+        android:id="@+id/div_h_02"
+        style="@style/divider_horizontal"
+        android:layout_below="@+id/textView_item_name" />
+     
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/textView_item_name"
+         android:layout_centerHorizontal="true"
+         android:layout_marginBottom="10dp"
+         android:layout_marginTop="10dp"
+         android:orientation="horizontal" >
+
+         <Button
+             android:id="@+id/button_new_item_cancel"
+             style="?android:attr/buttonBarButtonStyle"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginRight="10dp"
+             android:text="@string/cancel" />
+
+         <Button
+             android:id="@+id/button_new_item_ok"
+             style="?android:attr/buttonBarButtonStyle"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="10dp"
+             android:text="@string/ok" />
+     </LinearLayout>
+
+</RelativeLayout>

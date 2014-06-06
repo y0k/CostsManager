@@ -6,10 +6,9 @@ import java.util.Date;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -24,6 +23,8 @@ import arto.costsmanager.records.Record;
 public class ActivityNewRecord extends Activity 
 		implements DialogICItems.ICItemReceiveListener {
 	
+	public static final String KEY_NUMBER = "NUMBER";
+	
 	private TextView icitemLabel;
 	private TextView icitem;
 	private TextView date;
@@ -31,10 +32,13 @@ public class ActivityNewRecord extends Activity
 	private EditText comment;
 	
 	private RadioButton rbtnCost;
-//	private RadioButton rbtnIncome;
+	private RadioButton rbtnIncome;
 
 	private String [] incomeItems;
 	private String [] costItems;
+	private Record editRecord;
+	
+	private boolean isEdit;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +48,16 @@ public class ActivityNewRecord extends Activity
 		costItems = getIntent().getExtras().getStringArray(ICItem.KEY_COSTS);
 		incomeItems = getIntent().getExtras().getStringArray(ICItem.KEY_INCOMES);
 		
+		editRecord = getIntent().getExtras().getParcelable(Record.KEY_RECORD);
+		if (editRecord != null) isEdit = true;
+				
 		icitemLabel = (TextView) findViewById(R.id.textView_icitem_type);
 		icitem = (TextView) findViewById(R.id.textView_icitem);
 		date = (TextView) findViewById(R.id.textView_date_value);
 		sum = (EditText) findViewById(R.id.editText_sum);
 		comment = (EditText) findViewById(R.id.editText_comment);
 		rbtnCost = (RadioButton) findViewById(R.id.radio_new_record_rtype_cost);
-//		rbtnIncome = (RadioButton) findViewById(R.id.radio_new_record_rtype_income);
+		rbtnIncome = (RadioButton) findViewById(R.id.radio_new_record_rtype_income);
 		
 		rbtnCost.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
@@ -60,8 +67,7 @@ public class ActivityNewRecord extends Activity
 					icitem.setText(costItems[0]);
 					icitemLabel.setText(getResources().getString(
 							R.string.citem_cost));					
-				}
-				else {
+				} else {
 					icitem.setText(incomeItems[0]);
 					icitemLabel.setText(getResources().getString(
 							R.string.citem_income));
@@ -69,12 +75,6 @@ public class ActivityNewRecord extends Activity
 			}
 		});
 		
-		
-		final Date curDate = new Date();
-		date.setText(SimpleDateFormat.getDateTimeInstance().format(curDate));
-		
-		if (rbtnCost.isChecked()) icitem.setText(costItems[0]);
-		else icitem.setText(incomeItems[0]);
 		icitem.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -89,6 +89,26 @@ public class ActivityNewRecord extends Activity
 			}
 		});
 		
+		final Date curDate;
+		
+		if (isEdit) {
+			setTitle(R.string.edit_record);
+			if (editRecord.getType() == RType.COSTS) rbtnCost.setChecked(true);
+			else rbtnIncome.setChecked(true);
+				
+			curDate = new Date(editRecord.getDate());
+			date.setText(editRecord.getDateString());
+			icitem.setText(editRecord.getItemName());
+			sum.setText(Double.toString(editRecord.getSum()));
+			comment.setText(editRecord.getComment());
+		} else {
+			rbtnCost.setChecked(true);
+			if (rbtnCost.isChecked()) icitem.setText(costItems[0]);
+			else icitem.setText(incomeItems[0]);
+			curDate = new Date();
+			date.setText(SimpleDateFormat.getDateTimeInstance().format(curDate));
+		}
+		
 		Button btnOK = (Button) findViewById(R.id.button_new_record_ok);
 		btnOK.setOnClickListener(new OnClickListener() {
 			@Override
@@ -96,7 +116,7 @@ public class ActivityNewRecord extends Activity
 				
 				RType type;
 				if (rbtnCost.isChecked()) type = RType.COSTS;
-				else type= RType.INCOME;
+				else type = RType.INCOME;
 				double sumValue;
 				try {
 					sumValue = Double.parseDouble(sum.getText().toString());
@@ -104,18 +124,32 @@ public class ActivityNewRecord extends Activity
 					sumValue = 0;
 				}
 				
-				Record record = new Record(
-						new ICItem(type, icitem.getText().toString()),
-						sumValue,
-					curDate.getTime(),
-					comment.getText().toString());
+				
+				String icitemName = icitem.getText().toString();
+				int icitemNum = 0;
+				String [] tmp;
+				if (type.isCost()) tmp = costItems;
+				else tmp = incomeItems;
+				for (int i = 0; i < tmp.length; i++) {
+					if (icitemName.equals(tmp[i])) {
+						icitemNum = i;
+						break;
+					}
+				}
+				
 				Intent answer = new Intent();
-				answer = answer.putExtra(Record.KEY_RECORD, 
-						(Parcelable) record);
-				answer.putExtra("OLOLO", "answerstring");
+				answer.putExtra(Record.KEY_TYPE, type.number);
+				answer.putExtra(KEY_NUMBER, icitemNum);
+				answer.putExtra(Record.KEY_SUM, sumValue);
+				answer.putExtra(Record.KEY_COMMENT, comment.getText().toString());
+				if (isEdit) {
+					answer.putExtra(Record.KEY_DATE, editRecord.getDate());
+					answer.putExtra(Record.KEY_ID, editRecord.getId());
+				} else {
+					answer.putExtra(Record.KEY_DATE, curDate.getTime());
+				}				
 				setResult(RESULT_OK, answer);
 				finish();
-				
 			}
 		});
 		

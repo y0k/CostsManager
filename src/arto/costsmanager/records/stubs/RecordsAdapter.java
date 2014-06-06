@@ -1,7 +1,6 @@
 package arto.costsmanager.records.stubs;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 import arto.costsmanager.records.ICItem;
@@ -14,14 +13,13 @@ import arto.costsmanager.records.User;
 public class RecordsAdapter implements RecordsInterface {
 
 	@Override
-	public int addNewRecord(RType type, String state, double sum, long date,
-			String comment) {
+	public int addRecord(int itemId, double sum, long date, String comment) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int addNewRecord(Record newRecord) {
+	public int addRecord(Record newRecord) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -33,37 +31,26 @@ public class RecordsAdapter implements RecordsInterface {
 	}
 
 	@Override
+	public boolean editRecord(int recordId, int itemId, double sum, long date,
+			String comment) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean editRecord(Record editedRecord) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
 	public void deleteRecord(int id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean changeSum(int recordId, double newSum) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean changeICItem(int recordId, ICItem newItem) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean changeDate(int recordId, long newDate) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean changeComment(int recordId, String newComment) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<Record> getRecords(ICItem item) {
+	public List<Record> getRecords(int itemId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -81,7 +68,7 @@ public class RecordsAdapter implements RecordsInterface {
 	}
 
 	@Override
-	public List<Record> getRecords(ICItem[] items, long dateFrom, long dateTo) {
+	public List<Record> getRecords(int[] itemIds, long dateFrom, long dateTo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -99,68 +86,79 @@ public class RecordsAdapter implements RecordsInterface {
 	}
 
 	@Override
-	public List<Record> getAllIncomes() {
+	public List<Record> getIncomes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<HashMap<String, Object>> getAllIncomesAsMapList() {
+	public List<HashMap<String, Object>> getIncomesAsMapList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Record> getAllCosts() {
+	public List<Record> getCosts() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<HashMap<String, Object>> getAllCostsAsMapList() {
+	public List<HashMap<String, Object>> getCostsAsMapList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean addItem(RType type, String name) {
+	public int[] getAllRecordsIds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getCostsIds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getIncomesIds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int addICItem(RType type, String name) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int addICItem(ICItem newItem) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ICItem getICItem(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean editICItem(int id, RType newType, String newName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean addItem(ICItem newItem) {
+	public boolean editICItem(ICItem editedItem) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean changeItem(RType type, String name, String newName) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean changeItem(RType type, String name, RType newType) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean changeItem(RType type, String name, RType newType,
-			String newName) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void deleteItem(RType type, String name) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteItem(ICItem item) {
+	public void deleteICItem(int id) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -172,13 +170,31 @@ public class RecordsAdapter implements RecordsInterface {
 	}
 
 	@Override
-	public List<ICItem> getAllIncomeItems() {
+	public List<ICItem> getIncomeItems() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ICItem> getAllCostItems() {
+	public List<ICItem> getCostItems() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getAllItemIds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getIncomeItemIds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getCostItemIds() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -202,37 +218,7 @@ public class RecordsAdapter implements RecordsInterface {
 	}
 
 	@Override
-	public boolean changeTemplate(int id, String newName) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean changeTemplate(int id, ICItem newItem) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean changeTemplate(int id, String newName, String newComment) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean changeTemplate(int id, double sum) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean changeTemplate(int id, String name, double sum) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean changeTemplate(int id, String newName, ICItem newItem,
+	public boolean editTemplate(int id, String newName, int istemId,
 			double newSum, String newComment) {
 		// TODO Auto-generated method stub
 		return false;
@@ -311,40 +297,17 @@ public class RecordsAdapter implements RecordsInterface {
 	}
 
 	@Override
-	public List<String> getAllItemNames() {
+	public String[] getIncomeItemNames() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<String> getAllIncomeItemNames() {
+	public String[] getCostItemNames() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<String> getAllCostItemNames() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int[] getAllRecordsIds() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int[] getAllCostsIds() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int[] getAllIncomesIds() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 }

@@ -12,20 +12,44 @@ public class ICItem implements Parcelable {
 	
 	public static final String KEY_INCOMES = "Incomes";
 	public static final String KEY_COSTS = "Costs";
+	public static final String KEY_ICITEM = "ICItem";
+	
 	
 	private RType type;
 	private String name;
-	private ICItem parent;
+	private int parentId;
+	private int id;
 	
-	public ICItem(RType type, String name, ICItem parent) {
+	public ICItem(int id, RType type, String name, int parent) {
 		this.type = type;
 		this.name = name;
-		this.parent = parent;
+		this.parentId = parent;
+		this.id = id;
+	}
+
+	public ICItem(int id, RType type, String name) {
+		this.type = type;
+		this.name = name;
+		this.id = id;
+		parentId = -1;
+	}
+
+	public ICItem(RType type, String name, int parent) {
+		this.type = type;
+		this.name = name;
+		this.parentId = parent;
+		id = -1;
 	}
 
 	public ICItem(RType type, String name) {
 		this.type = type;
 		this.name = name;
+		id = -1;
+		parentId = -1;
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 	public RType getType() {
@@ -36,13 +60,13 @@ public class ICItem implements Parcelable {
 		return name;
 	}
 	
-	public ICItem getParent() {
-		return parent;
+	public int getParent() {
+		return parentId;
 	}
 	
 	public boolean hasParent() {
-		if (parent == null) return false;
-		else return true;
+		if (parentId != -1) return true;
+		else return false;
 	}
 
 	@Override
@@ -52,9 +76,8 @@ public class ICItem implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeInt(type.number);
+		dest.writeIntArray(new int [] {id, type.number, parentId});
 		dest.writeString(name);
-		dest.writeParcelable(parent, 0);
 	}
 	
 	public static final Parcelable.Creator<ICItem> CREATOR = 
@@ -71,10 +94,13 @@ public class ICItem implements Parcelable {
 	};
 
 	private ICItem(Parcel parcel) {
-		if (parcel.readInt() == RType.COSTS.number) type = RType.COSTS;
+		int [] ints = new int [3];
+		parcel.readIntArray(ints);
+		id = ints[0];
+		if (ints[1] == RType.COSTS.number) type = RType.COSTS;
 		else type = RType.INCOME;
 		name = parcel.readString();
-		parent = parcel.readParcelable(ICItem.class.getClassLoader());
+		parentId = ints[2];
 	}
 			
 			
